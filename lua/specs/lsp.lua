@@ -4,6 +4,12 @@ return {
 		version = '*',
 	},
 	{
+		"ray-x/lsp_signature.nvim",
+		opts = {
+
+		}
+	},
+	{
 		'mason-org/mason.nvim',
 		version = '*',
 		lazy=false,
@@ -35,6 +41,23 @@ return {
 				automatic_enable = true,
 			})
 
+			vim.lsp.config("clangd", {
+				cmd = { "clangd", "--background-index", "--clang-tidy" },
+				settings = {
+					clangd = {
+						InlayHints = {
+							Enabled = true,
+							ParameterNames = true,
+							DeducedTypes = true,
+						},
+					},
+				},
+				on_attach = function(client, bufnr)
+					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+					--require('lsp_signature').on_attach(client, bufnr)
+				end,
+			})
+
 			vim.lsp.config("lua_ls", {
 				settings = {
 					Lua = {
@@ -44,19 +67,15 @@ return {
 				},
 			})
 
-			vim.lsp.config("clangd", {
-				cmd = { "clangd", "--background-index", "--clang-tidy" },
-			})
-
-			vim.api.nvim_create_autocmd('LspAttach', {
+			--[[vim.api.nvim_create_autocmd('LspAttach', {
 				callback = function(args)
 					local client = vim.lsp.get_client_by_id(args.data.client_id)
 					if client and client.supports_method('textDocument/inlayHint') then
 						vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
 					end
 				end,
-			})
+			})]]--
 		end,
-	}
+	},
 }
 
