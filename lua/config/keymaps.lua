@@ -1,8 +1,10 @@
 local map = vim.keymap.set
---
+
+vim.api.nvim_set_keymap('n', '<leader> ', 'za', { noremap = true, silent = true })
+
 -- Git manipulations
 
-map('n', '<leader>hs', require('gitsigns').stage_hunk, {
+map('n', '<leader>hs', function() require('gitsigns').stage_hunk() end, {
 	desc = "Git: Stage/unstage hunk under the cursor"
 })
 
@@ -14,15 +16,15 @@ map('v', '<leader>hs', stage_hunk_visual, {
 	desc = "Git: Stage/unstage hunk partially using visual selection"
 })
 
-map('n', '<leader>Hs', require('gitsigns').stage_buffer, {
+map('n', '<leader>Hs', function() require('gitsigns').stage_buffer() end, {
 	desc = "Git: Stage all hunks in current buffer"
 })
 
-map('n', '<leader>hr', require('gitsigns').reset_hunk, {
+map('n', '<leader>hr', function() require('gitsigns').reset_hunk() end, {
 	desc = "Git: Reset hunk under the cursor"
 })
 
-map('n', '<leader>Hr', require('gitsigns').reset_buffer, {
+map('n', '<leader>Hr', function() require('gitsigns').reset_buffer() end, {
 	desc = "Git: Reset all hunks in current buffer"
 })
 
@@ -57,7 +59,7 @@ map('n', '<leader>hp', prev_hunk, {
 	desc = "Git: Go to the previos hunk"
 })
 
-map('n', '<leader>hP', require('gitsigns').preview_hunk, {
+map('n', '<leader>hP', function() require('gitsigns').preview_hunk() end, {
 	desc = "Git: Show diff of the hunk under cursor"
 })
 
