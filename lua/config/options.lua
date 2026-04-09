@@ -1,14 +1,11 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.opt.termguicolors = true
 
-vim.o.background = "dark"
+vim.opt.background = "dark"
 
-vim.o.cmdheight=0
+vim.opt.cmdheight=0
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -21,12 +18,10 @@ vim.diagnostic.config({
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.o.foldcolumn = '1'
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-
-vim.api.nvim_set_keymap('n', '<leader> ', 'za', { noremap = true, silent = true })
+vim.opt.foldcolumn = '1'
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
 
 vim.opt.colorcolumn = "80"
 
