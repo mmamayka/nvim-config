@@ -11,7 +11,7 @@ return {
 			require('luasnip').setup(opts)
 
 			require("luasnip.loaders.from_lua").load({
-				paths = vim.fn.stdpath('config') .. 'LuaSnip',
+				paths = { vim.fn.stdpath('config') .. '/lua/snippets', }
 			})
 		end,
 	}
